@@ -93,15 +93,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Domain\AgedBrie.cs" />
+    <Compile Include="Domain\BackstagePasses.cs" />
+    <Compile Include="Domain\Conjured.cs" />
+    <Compile Include="Domain\DexterityVest.cs" />
+    <Compile Include="Domain\ElixirMongoose.cs" />
+    <Compile Include="Domain\Sulfuras.cs" />
+    <Compile Include="GildedRose\GlidedRoseAdminPanel.cs" />
+    <Compile Include="GildedRose\ItemFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IServices\IUpdateQuality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GildedRose\GildedRoseAdminPanel.cs" />
     <Compile Include="GildedRose\Item.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="GildedRose\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -110,7 +119,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="GildedRose\Web.config" />
-    <Content Include="GildedRose\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
