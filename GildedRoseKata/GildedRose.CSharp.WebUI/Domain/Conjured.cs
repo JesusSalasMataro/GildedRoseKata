@@ -17,10 +17,7 @@ namespace GildedRose.CSharp.WebUI.Domain
                 Quality -= 2;
             }
 
-            if (Quality < 0)
-            {
-                Quality = 0;
-            }
+            if (Quality < 0) Quality = 0;
 
             return Quality;
         }

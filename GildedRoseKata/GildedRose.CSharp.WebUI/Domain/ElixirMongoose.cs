@@ -12,10 +12,16 @@ namespace GildedRose.CSharp.WebUI.Domain
     {
         public int UpdateQuality()
         {
-            if (Quality > 0)
+            if (SellIn > 0)
             {
                 Quality--;
             }
+            else
+            {
+                Quality -= 2;
+            }
+
+            if (Quality < 0) Quality = 0;
 
             return Quality;
         }
