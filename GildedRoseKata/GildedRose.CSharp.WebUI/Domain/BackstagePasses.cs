@@ -8,32 +8,39 @@ using System.Threading.Tasks;
 
 namespace GildedRose.CSharp.WebUI.Domain
 {
-    public class BackstagePasses : Item, IUpdateQuality
+    public class BackstagePassesDecorator: IUpdateQuality
     {
+         private Item _item;
+
+         public BackstagePassesDecorator(Item item)
+        {
+            _item = item;
+        }
+
         public int UpdateQuality()
         {
-            if (SellIn <= 0)
+            if (_item.SellIn <= 0)
             {
-                Quality = 0;
+                _item.Quality = 0;
             }
             else
             {
-                if (SellIn <= 5)
+                if (_item.SellIn <= 5)
                 {
-                    Quality += 3;
+                    _item.Quality += 3;
                 }
-                else if (SellIn <= 10)
+                else if (_item.SellIn <= 10)
                 {
-                    Quality += 2;
+                    _item.Quality += 2;
                 }
             }
 
-            if (Quality > 50)
+            if (_item.Quality > 50)
             {
-                Quality = 50;
+                _item.Quality = 50;
             }
 
-            return Quality;
+            return _item.Quality;
         }
     }
 }

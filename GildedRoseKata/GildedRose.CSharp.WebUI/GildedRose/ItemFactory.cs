@@ -47,12 +47,7 @@ namespace GildedRose.CSharp.WebUI.GildedRose
 
             else if (item.Name.Equals("Backstage passes to a TAFKAL80ETC concert"))
             {
-                updateQuality = new BackstagePasses
-                {
-                    Name = item.Name,
-                    SellIn = item.SellIn,
-                    Quality = item.Quality
-                };
+                updateQuality = new BackstagePassesDecorator(item);
             }
 
             else if (item.Name.Equals("Conjured Mana Cake"))
