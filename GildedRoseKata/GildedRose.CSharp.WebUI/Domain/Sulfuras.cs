@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GildedRose.CSharp.WebUI.Domain
 {
-    public class Sulfuras : Item
+    public class Sulfuras
     {
 
     }

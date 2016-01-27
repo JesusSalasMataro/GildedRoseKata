@@ -8,16 +8,23 @@ using System.Threading.Tasks;
 
 namespace GildedRose.CSharp.WebUI.Domain
 {
-    public class AgedBrie: Item, IUpdateQuality
+    public class AgedBrieDecorator: IUpdateQuality
     {
+        private Item _item;
+
+        public AgedBrieDecorator(Item item)
+        {
+            _item = item;
+        }
+
         public int UpdateQuality()
         {
-            if (Quality < 50)
+            if (_item.Quality < 50)
             {
-                Quality++;
+                _item.Quality++;
             }
 
-            return Quality;
+            return _item.Quality;
         }
     }
 }

@@ -93,11 +93,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Domain\AgedBrie.cs" />
-    <Compile Include="Domain\BackstagePasses.cs" />
-    <Compile Include="Domain\Conjured.cs" />
-    <Compile Include="Domain\DexterityVest.cs" />
-    <Compile Include="Domain\ElixirMongoose.cs" />
+    <Compile Include="Domain\AgedBrieDecorator.cs" />
+    <Compile Include="Domain\BackstagePassesDecorator.cs" />
+    <Compile Include="Domain\ConjuredDecorator.cs" />
+    <Compile Include="Domain\DexterityVestDecorator.cs" />
+    <Compile Include="Domain\ElixirMongooseDecorator.cs" />
     <Compile Include="Domain\Sulfuras.cs" />
     <Compile Include="GildedRose\GlidedRoseAdminPanel.cs" />
     <Compile Include="GildedRose\ItemFactory.cs" />

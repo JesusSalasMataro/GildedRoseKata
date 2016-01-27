@@ -8,22 +8,29 @@ using System.Threading.Tasks;
 
 namespace GildedRose.CSharp.WebUI.Domain
 {
-    public class ElixirMongoose : Item, IUpdateQuality
+    public class ElixirMongooseDecorator : IUpdateQuality
     {
+        private Item _item;
+
+        public ElixirMongooseDecorator(Item item)
+        {
+            _item = item;
+        }
+
         public int UpdateQuality()
         {
-            if (SellIn > 0)
+            if (_item.SellIn > 0)
             {
-                Quality--;
+                _item.Quality--;
             }
             else
             {
-                Quality -= 2;
+                _item.Quality -= 2;
             }
 
-            if (Quality < 0) Quality = 0;
+            if (_item.Quality < 0) _item.Quality = 0;
 
-            return Quality;
+            return _item.Quality;
         }
     }
 }

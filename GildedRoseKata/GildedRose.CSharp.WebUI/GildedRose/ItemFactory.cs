@@ -17,32 +17,17 @@ namespace GildedRose.CSharp.WebUI.GildedRose
 
             if (item.Name.Equals("Aged Brie"))
             {
-                updateQuality = new AgedBrie
-                {
-                    Name = item.Name,
-                    SellIn = item.SellIn,
-                    Quality = item.Quality
-                };
+                updateQuality = new AgedBrieDecorator(item);
             }
 
             else if (item.Name.Equals("Elixir of the Mongoose"))
             {
-                updateQuality = new ElixirMongoose
-                {
-                    Name = item.Name,
-                    SellIn = item.SellIn,
-                    Quality = item.Quality
-                };
+                updateQuality = new ElixirMongooseDecorator(item);
             }
 
             else if (item.Name.Equals("+5 Dexterity Vest"))
             {
-                updateQuality = new DexterityVest
-                {
-                    Name = item.Name,
-                    SellIn = item.SellIn,
-                    Quality = item.Quality
-                };
+                updateQuality = new DexterityVestDecorator(item);
             }
 
             else if (item.Name.Equals("Backstage passes to a TAFKAL80ETC concert"))
@@ -52,12 +37,7 @@ namespace GildedRose.CSharp.WebUI.GildedRose
 
             else if (item.Name.Equals("Conjured Mana Cake"))
             {
-                updateQuality = new Conjured
-                {
-                    Name = item.Name,
-                    SellIn = item.SellIn,
-                    Quality = item.Quality
-                };
+                updateQuality = new ConjuredDecorator(item);
             }
 
             return updateQuality;
