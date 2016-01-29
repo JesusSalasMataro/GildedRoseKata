@@ -13,6 +13,39 @@ namespace GildedRose.CSharp.WebUI.Views.Home
 
         public int Quality { get; set; }
 
+        public void UpdateItem() 
+        { 
+            UpdateQuality();
+            UpdateSellIn();
+        }
+
+        protected virtual void UpdateQuality() 
+        {
+            if (SellIn <= 0)
+            {
+                if (Quality > 1)
+                {
+                    Quality -= 2;
+                }
+                else
+                {
+                    Quality = 0;
+                }
+            }
+            else
+            {
+                if (Quality > 0)
+                {
+                    Quality -= 1;
+                }
+            }
+        }
+
+        protected void UpdateSellIn()
+        {
+            SellIn -= 1;
+        }
+
         public override String ToString()
         {
             return Name + "#" + SellIn + "#" + Quality;

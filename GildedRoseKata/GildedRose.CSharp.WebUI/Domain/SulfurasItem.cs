@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace GildedRose.CSharp.WebUI.Domain
 {
-    public class Sulfuras
+    public class SulfurasItem: Item
     {
-
+        protected override void UpdateQuality()
+        {
+            
+        }
     }
 }

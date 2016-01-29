@@ -9,6 +9,5 @@ namespace GildedRose.CSharp.WebUI.IServices
     public interface IUpdateQuality
     {
         int UpdateQuality();
-        // aaa
     }
 }

@@ -7,26 +7,27 @@ namespace UpdateQualityTest
     [TestClass]
     public class UpdateQualityServiceTests
     {
-        public GildedRoseAdminPanel glidedRoseAdminPanel;
+        public GildedRoseAdminPanel gildedRoseAdminPanel;
 
         [TestInitialize]
         public void Initialize()
         {
-            glidedRoseAdminPanel = new GildedRoseAdminPanel();
+            gildedRoseAdminPanel = new GildedRoseAdminPanel();
         }
 
 
         // Tests en positivo
 
         [TestMethod]
-        public void Given_UnItem_When_UpdateQuality_Then_QualityReduce1()
+        public void Given_AnItem_When_UpdateQuality_Then_QualityReduces1()
         {
             // ARRANGEMENT
             Item item = buscarItem("Elixir of the Mongoose");
+            item.Quality = 3;
             int expected = item.Quality - 1;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -34,15 +35,16 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_UnItem_When_FechaCaducidadHaPasado_Then_QualityReduce2()
+        public void Given_AnItem_When_SellDatePassed_Then_QualityReduces2()
         {
             // ARRANGEMENT
             Item item = buscarItem("Elixir of the Mongoose");
             item.SellIn = 0;
+            item.Quality = 3;
             int expected = item.Quality - 2;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -50,7 +52,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_UnItem_When_QualityReduce_QualityNuncaInferiorA0()
+        public void Given_AnItem_When_QualityReduces_Then_QualityNeverUnder0()
         {
             // ARRANGEMENT
             Item item = buscarItem("Elixir of the Mongoose");
@@ -58,7 +60,7 @@ namespace UpdateQualityTest
             int expected = 0;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -66,14 +68,15 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_AgedBridItem_When_UpdateQuality_QualityAumenta()
+        public void Given_AgedBridItem_When_UpdateQuality_Then_QualityIncreases1()
         {
             // ARRANGEMENT
             Item item = buscarItem("Aged Brie");
+            item.Quality = 3;
             int expected = item.Quality + 1;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -81,7 +84,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_UnItem_When_UpdateQuality_QualityNuncaSuperiorA50()
+        public void Given_AnItem_When_UpdateQuality_Then_QualityNeverAbove50()
         {
             // ARRANGEMENT
             Item item = buscarItem("Aged Brie");
@@ -89,7 +92,7 @@ namespace UpdateQualityTest
             int expected = 50;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -97,14 +100,14 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_SulfurasItem_When_UpdateQuality_QualityNuncaReduce()
+        public void Given_SulfurasItem_When_UpdateQuality_Then_QualityNeverDecreases()
         {
             // ARRANGEMENT
             Item item = buscarItem("Sulfuras, Hand of Ragnaros");
             int expected = item.Quality;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -112,7 +115,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_QuedanEntre10y6Dias_QualityIncrementa2()
+        public void Given_BackstagePassesItem_When_Between10and6DaysLeft_Then_QualityIncreases2()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -120,7 +123,7 @@ namespace UpdateQualityTest
             int expected = item.Quality + 2;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -128,7 +131,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_QuedanEntre5y1Dias_QualityIncrementa3()
+        public void Given_BackstagePassesItem_When_Between5and1DaysLeft_Then_QualityIncreases3()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -136,7 +139,7 @@ namespace UpdateQualityTest
             int expected = item.Quality + 3;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -144,7 +147,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_Quedan0Dias_QualityEs0()
+        public void Given_BackstagePassesItem_When_0DaysLeft_Then_QualityEquals0()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -152,7 +155,7 @@ namespace UpdateQualityTest
             int expected = 0;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -160,14 +163,14 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_ConjuredItem_When_UpdateQuality_QualityReduce2()
+        public void Given_ConjuredItem_When_UpdateQuality_Then_QualityDecreases2()
         {
             // ARRANGEMENT
             Item item = buscarItem("Conjured Mana Cake");
             int expected = item.Quality - 2;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -178,7 +181,7 @@ namespace UpdateQualityTest
         // Valores extremos
 
         [TestMethod]
-        public void Given_UnItem_When_FechaCaducidadNegativa_Then_QualityReduce2()
+        public void Given_AnItem_When_SellDateUnder0_Then_QualityReduces2()
         {
             // ARRANGEMENT
             Item item = buscarItem("Elixir of the Mongoose");
@@ -186,7 +189,7 @@ namespace UpdateQualityTest
             int expected = item.Quality - 2;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -194,7 +197,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_Quedan10Dias_QualityIncrementa2()
+        public void Given_BackstagePassesItem_When_SellDateIs10DaysLeft_Then_QualityIncreases2()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -202,7 +205,7 @@ namespace UpdateQualityTest
             int expected = item.Quality + 2;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -210,7 +213,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_Quedan6Dias_QualityIncrementa2()
+        public void Given_BackstagePassesItem_When_SellDate6DaysLeft_Then_QualityIncreases2()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -218,7 +221,7 @@ namespace UpdateQualityTest
             int expected = item.Quality + 2;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -226,7 +229,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_Quedan5Dias_QualityIncrementa3()
+        public void Given_BackstagePassesItem_When_SellDate5DaysLeft_Then_QualityIncreases3()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -234,7 +237,7 @@ namespace UpdateQualityTest
             int expected = item.Quality + 3;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -242,7 +245,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_Queda1Dia_QualityIncrementa3()
+        public void Given_BackstagePassesItem_When_SellDate1DayLeft_Then_QualityIncreases3()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -250,7 +253,7 @@ namespace UpdateQualityTest
             int expected = item.Quality + 3;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -258,7 +261,7 @@ namespace UpdateQualityTest
         }
 
         [TestMethod]
-        public void Given_BackstagePassesItem_When_SellInNegativo_QualityEs0()
+        public void Given_BackstagePassesItem_When_SellInUnder0_Then_QualityEquals0()
         {
             // ARRANGEMENT
             Item item = buscarItem("Backstage passes to a TAFKAL80ETC concert");
@@ -266,7 +269,7 @@ namespace UpdateQualityTest
             int expected = 0;
 
             // ACT
-            glidedRoseAdminPanel.UpdateQuality();
+            gildedRoseAdminPanel.UpdateQuality();
             int actual = item.Quality;
 
             // ASSERTS
@@ -280,11 +283,11 @@ namespace UpdateQualityTest
             int i = 0;
             Item item = new Item();
 
-            while (!bEncontrado && i < glidedRoseAdminPanel.Items.Count)
+            while (!bEncontrado && i < gildedRoseAdminPanel.Items.Count)
             {
-                if (glidedRoseAdminPanel.Items[i].Name.Equals(nombreItem))
+                if (gildedRoseAdminPanel.Items[i].Name.Equals(nombreItem))
                 {
-                    item = glidedRoseAdminPanel.Items[i];
+                    item = gildedRoseAdminPanel.Items[i];
                     bEncontrado = true;
                 }
                 i++;
