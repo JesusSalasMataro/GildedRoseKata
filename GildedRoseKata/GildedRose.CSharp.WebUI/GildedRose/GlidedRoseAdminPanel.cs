@@ -1,5 +1,4 @@
 ﻿using GildedRose.CSharp.WebUI.Domain;
-using GildedRose.CSharp.WebUI.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -93,15 +93,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Domain\AgedBrieItem.cs" />
-    <Compile Include="Domain\BackstagePassesItem.cs" />
-    <Compile Include="Domain\ConjuredItem.cs" />
-    <Compile Include="Domain\SulfurasItem.cs" />
+    <Compile Include="Entities\AgedBrieItem.cs" />
+    <Compile Include="Entities\BackstagePassesItem.cs" />
+    <Compile Include="Entities\ConjuredItem.cs" />
+    <Compile Include="Entities\SulfurasItem.cs" />
     <Compile Include="GildedRose\GlidedRoseAdminPanel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IServices\IUpdateQuality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GildedRose\Item.cs" />
   </ItemGroup>
